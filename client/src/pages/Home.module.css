@@ -1,0 +1,20 @@
+.greeting { display: flex; justify-content: space-between; align-items: center; margin-bottom: 30px; }
+.title { font-family: var(--font-head); font-size: 32px; font-weight: 800; }
+.sub { color: var(--muted); margin-top: 4px; }
+.statsRow { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 32px; }
+.statCard { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 20px; display: flex; flex-direction: column; align-items: center; gap: 4px; text-align: center; }
+.statIcon { font-size: 24px; }
+.statVal { font-family: var(--font-head); font-size: 28px; font-weight: 800; color: var(--accent); }
+.statLabel { font-size: 12px; color: var(--muted); }
+.grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+.sectionTitle { font-family: var(--font-head); font-size: 18px; font-weight: 700; margin-bottom: 16px; }
+.empty { color: var(--muted); font-size: 14px; }
+.requestCard { display: flex; flex-direction: column; gap: 12px; margin-bottom: 12px; }
+.reqHeader { display: flex; gap: 12px; align-items: flex-start; }
+.reqName { font-weight: 600; font-size: 14px; }
+.reqMsg { font-size: 13px; color: var(--muted); margin-top: 2px; }
+.reqSkills { display: flex; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.reqActions { display: flex; gap: 8px; }
+.connectionItem { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; transition: border-color 0.2s; }
+.connectionItem:hover { border-color: var(--accent); }
+@media (max-width: 900px) { .statsRow { grid-template-columns: repeat(2, 1fr); } .grid { grid-template-columns: 1fr; } }

@@ -1,0 +1,15 @@
+.title { font-family: var(--font-head); font-size: 32px; font-weight: 800; margin-bottom: 6px; }
+.sub { color: var(--muted); margin-bottom: 24px; }
+.filterBar { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 20px; align-items: center; }
+.filterBar input { flex: 1; min-width: 130px; }
+.searchInput { flex: 2; min-width: 200px; }
+.rateInput { max-width: 110px; }
+.loading { text-align: center; color: var(--muted); padding: 60px; font-size: 16px; }
+.resultCount { color: var(--muted); font-size: 14px; margin-bottom: 16px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; }
+.empty { text-align: center; color: var(--muted); padding: 60px; font-size: 15px; }
+.modal { position: fixed; inset: 0; background: rgba(0,0,0,0.75); display: flex; align-items: center; justify-content: center; z-index: 200; }
+.modalCard { background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; width: 90%; max-width: 460px; }
+.modalTitle { font-family: var(--font-head); font-size: 20px; font-weight: 700; margin-bottom: 6px; }
+.modalSub { color: var(--muted); font-size: 14px; margin-bottom: 20px; }
+.modalForm { display: flex; flex-direction: column; gap: 12px; }

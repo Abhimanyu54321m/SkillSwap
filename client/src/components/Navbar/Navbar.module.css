@@ -1,0 +1,21 @@
+.nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 40px; height: 64px;
+  background: rgba(10,10,15,0.95);
+  border-bottom: 1px solid var(--border);
+  position: sticky; top: 0; z-index: 100;
+  backdrop-filter: blur(12px);
+}
+.logo {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--font-head); font-size: 20px; font-weight: 800; color: var(--text);
+}
+.logoIcon { font-size: 22px; }
+.links { display: flex; gap: 4px; }
+.link { padding: 7px 16px; border-radius: 8px; font-size: 14px; color: var(--muted); transition: all 0.2s; }
+.link:hover { color: var(--text); background: var(--bg3); }
+.active { color: var(--text) !important; background: var(--bg3); }
+.right { display: flex; align-items: center; gap: 12px; }
+.avatarBtn { display: flex; align-items: center; gap: 8px; padding: 4px 8px; border-radius: 8px; transition: background 0.2s; }
+.avatarBtn:hover { background: var(--bg3); }
+.userName { font-size: 14px; font-weight: 500; }
