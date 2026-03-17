@@ -63,7 +63,7 @@ npm run dev
 ```
 
 ### 4. Open
-Visit **http://localhost:5173**
+Visit **skill-swap-67zi.vercel.app**
 
 ## API Endpoints
 
