@@ -45,3 +45,16 @@ input:focus, textarea:focus { border-color: var(--accent); }
 @media (max-width: 768px) { .page { padding: 20px 16px; } }
 .avatar { border-radius: 50%; object-fit: cover; background: linear-gradient(135deg, var(--accent), var(--accent2)); display: flex; align-items: center; justify-content: center; font-family: var(--font-head); font-weight: 700; color: white; flex-shrink: 0; }
 .online-dot { width: 10px; height: 10px; border-radius: 50%; background: #4ade80; border: 2px solid var(--bg2); }
+* {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  word-break: break-word;
+  overflow-wrap: break-word;
+  letter-spacing: normal;
+}
