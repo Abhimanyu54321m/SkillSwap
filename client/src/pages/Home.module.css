@@ -18,3 +18,13 @@
 .connectionItem { display: flex; align-items: center; gap: 12px; padding: 12px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--radius); margin-bottom: 8px; transition: border-color 0.2s; }
 .connectionItem:hover { border-color: var(--accent); }
 @media (max-width: 900px) { .statsRow { grid-template-columns: repeat(2, 1fr); } .grid { grid-template-columns: 1fr; } }
+
+.title { 
+  word-break: break-word; 
+  hyphens: auto;
+}
+
+.reqMsg { 
+  word-break: break-word; 
+  overflow-wrap: break-word;
+}

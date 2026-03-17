@@ -14,3 +14,13 @@
 .skillList { display: flex; flex-wrap: wrap; gap: 5px; }
 .rate { font-size: 13px; }
 .actions { display: flex; gap: 8px; margin-top: 4px; }
+
+.name { 
+  word-break: break-word; 
+  overflow-wrap: break-word;
+}
+
+.bio { 
+  word-break: break-word; 
+  overflow-wrap: break-word;
+}
