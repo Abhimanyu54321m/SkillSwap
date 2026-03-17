@@ -16,24 +16,57 @@ const Message = require("./models/Message");
 const app = express();
 const server = http.createServer(app);
 
+
+// ✅ ALLOWED ORIGINS (IMPORTANT)
+const allowedOrigins = [
+  "http://localhost:5173", // local
+  "https://skill-swap-67zi.vercel.app" // your vercel frontend
+];
+
+
+// ✅ SOCKET.IO CORS FIX
 const io = new Server(server, {
   cors: {
-    origin: process.env.CLIENT_URL || "http://localhost:5173",
+    origin: allowedOrigins,
     methods: ["GET", "POST"],
     credentials: true,
   },
 });
 
-app.use(cors({ origin: process.env.CLIENT_URL || "http://localhost:5173", credentials: true }));
+
+// ✅ EXPRESS CORS FIX
+app.use(cors({
+  origin: function (origin, callback) {
+    // allow requests with no origin (like Postman)
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
+    } else {
+      return callback(new Error("Not allowed by CORS"));
+    }
+  },
+  credentials: true
+}));
+
+
 app.use(express.json());
 
+
+// ✅ ROUTES
 app.use("/api/auth", authRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/requests", requestRoutes);
 app.use("/api/messages", messageRoutes);
 
-app.get("/", (req, res) => res.json({ message: "SkillSwap API Running " }));
 
+// ✅ TEST ROUTE
+app.get("/", (req, res) => {
+  res.json({ message: "SkillSwap API Running 🚀" });
+});
+
+
+// ✅ SOCKET LOGIC
 const onlineUsers = new Map();
 
 io.on("connection", (socket) => {
@@ -50,8 +83,15 @@ io.on("connection", (socket) => {
 
   socket.on("send_message", async (data) => {
     const { roomId, senderId, receiverId, content } = data;
+
     try {
-      const message = await Message.create({ sender: senderId, receiver: receiverId, roomId, content });
+      const message = await Message.create({
+        sender: senderId,
+        receiver: receiverId,
+        roomId,
+        content,
+      });
+
       io.to(roomId).emit("receive_message", message);
     } catch (err) {
       console.error("Message save error:", err);
@@ -68,18 +108,25 @@ io.on("connection", (socket) => {
 
   socket.on("disconnect", () => {
     for (const [userId, socketId] of onlineUsers.entries()) {
-      if (socketId === socket.id) { onlineUsers.delete(userId); break; }
+      if (socketId === socket.id) {
+        onlineUsers.delete(userId);
+        break;
+      }
     }
+
     io.emit("online_users", Array.from(onlineUsers.keys()));
   });
 });
 
+
+// ✅ DATABASE CONNECTION
 mongoose
   .connect(process.env.MONGO_URI || "mongodb://localhost:27017/skillswap")
   .then(() => {
-    console.log(" MongoDB Connected");
+    console.log("✅ MongoDB Connected");
+
     server.listen(process.env.PORT || 5000, () => {
-      console.log(` Server running on port ${process.env.PORT || 5000}`);
+      console.log(`🚀 Server running on port ${process.env.PORT || 5000}`);
     });
   })
-  .catch((err) => console.error(" MongoDB Error:", err.message));
+  .catch((err) => console.error("❌ MongoDB Error:", err.message));
