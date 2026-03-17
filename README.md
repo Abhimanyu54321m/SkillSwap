@@ -63,7 +63,7 @@ npm run dev
 ```
 
 ### 4. Open
-Visit **skill-swap-67zi.vercel.app**
+Visit **https://skill-swap-67zi.vercel.app**
 
 ## API Endpoints
 
